@@ -14,9 +14,9 @@
     }
 
     #calendari {
-      width: 280px;
+      width: 240px;
       margin: 0 auto;
-      font-size: 14px;
+      font-size: 13px;
       position: relative;
     }
 
@@ -24,61 +24,58 @@
       border-collapse: collapse;
       table-layout: fixed;
       width: 100%;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
       background-color: #fff;
       position: relative;
     }
 
     td, th {
       text-align: center;
-      background-color: #fff;
       padding: 0;
+      background-color: #fff;
     }
 
     tr:first-child th {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       border-left: none;
       border-top: none;
     }
 
     th {
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-right: 1px solid rgba(0,0,0,0.1);
       background-color: #BCA688;
       color: #fff;
-      text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
       font-weight: normal;
-      padding: 8px;
+      padding: 6px;
     }
 
     th .any {
-      font-size: 12px;
-      font-weight: normal;
+      font-size: 11px;
       display: block;
-      color: rgba(0, 0, 0, 0.4);
+      color: rgba(0,0,0,0.45);
       margin-top: 2px;
     }
 
     tr:nth-child(2) th {
-      padding: 6px;
-      font-size: 13px;
+      padding: 4px;
+      font-size: 12px;
     }
 
     td {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     td > span {
-      color: #555;
-      padding: 7px;
       display: block;
+      padding: 5px;
+      color: #555;
       border: 2px solid transparent;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     td:nth-child(even) > span {
-      background-color: rgba(0, 0, 0, 0.02);
+      background-color: rgba(0,0,0,0.02);
     }
 
     td:last-child > span,
@@ -87,10 +84,10 @@
     }
 
     td.avui > span {
-      font-weight: bold;
       background-color: #BCA688;
       color: #fff;
-      border: 2px solid rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+      border: 2px solid rgba(0,0,0,0.1);
     }
 
     td.fora > span {
@@ -102,33 +99,26 @@
       color: #555;
     }
 
-    .boto-next,
-    .boto-prev {
-      background: rgba(0, 0, 0, 0.15);
+    .boto-prev,
+    .boto-next {
+      background: rgba(0,0,0,0.15);
       color: #fff;
-      font-family: inherit;
       border: none;
-      font-size: 18px;
-      font-weight: bold;
-      height: 30px;
-      width: 30px;
+      font-family: inherit;
+      font-size: 14px;
+      height: 24px;
+      width: 24px;
       border-radius: 999px;
       position: absolute;
-      top: 12px;
+      top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
-    }
-
-    .boto-prev { left: 8px; }
-    .boto-next { right: 8px; }
-
-    .boto-next:hover,
-    .boto-prev:hover {
-      background: rgba(0, 0, 0, 0.25);
       cursor: pointer;
     }
+
+    .boto-prev { left: 6px; }
+    .boto-next { right: 6px; }
 
     button:focus {
       outline: none;
@@ -147,7 +137,7 @@
 
     var dies_abr = ["Su","Mo","Tu","We","Th","Fr","Sa"];
 
-    Number.prototype.pad = function (num) {
+    Number.prototype.pad = function(num) {
       var str = "";
       for (var i = 0; i < (num - this.toString().length); i++) str += "0";
       return str + this.toString();
@@ -169,7 +159,6 @@
 
       var diff = new Date(data - new Date(original.getAttribute("data-actual"))).getMonth();
       var e = document.createElement("table");
-      e.className = diff === 0 ? "amagat-esquerra" : "amagat-dreta";
       widget.appendChild(e);
 
       e.setAttribute(
@@ -196,12 +185,12 @@
         mesos[data.getMonth()] + '<span class="any">' + data.getFullYear() + "</span>";
       titol.appendChild(boto_next);
 
-      boto_prev.onclick = function () {
+      boto_prev.onclick = function() {
         data.setMonth(data.getMonth() - 1);
         calendari(widget, data);
       };
 
-      boto_next.onclick = function () {
+      boto_next.onclick = function() {
         data.setMonth(data.getMonth() + 1);
         calendari(widget, data);
       };
@@ -234,17 +223,12 @@
         e.appendChild(fila);
       }
 
-      setTimeout(function () {
-        e.className = "actiu";
-        original.className = diff === 0 ? "amagat-dreta" : "amagat-esquerra";
-      }, 20);
-
       original.className = "inactiu";
 
-      setTimeout(function () {
+      setTimeout(function() {
         var inactius = document.getElementsByClassName("inactiu");
         while (inactius.length) widget.removeChild(inactius[0]);
-      }, 1000);
+      }, 500);
     }
 
     calendari(document.getElementById("calendari"), new Date());
