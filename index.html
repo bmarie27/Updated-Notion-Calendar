@@ -14,16 +14,16 @@
     }
 
     #calendari {
-      width: 240px;
+      width: 215px;
       margin: 0 auto;
-      font-size: 13px;
+      font-size: 12px;
       position: relative;
     }
 
     table {
+      width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
-      width: 100%;
       background-color: #fff;
       position: relative;
     }
@@ -35,47 +35,47 @@
     }
 
     tr:first-child th {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
-      border-left: none;
       border-top: none;
+      border-left: none;
     }
 
     th {
-      border-top: 1px solid rgba(0,0,0,0.1);
-      border-right: 1px solid rgba(0,0,0,0.1);
       background-color: #BCA688;
       color: #fff;
       font-weight: normal;
-      padding: 6px;
+      padding: 5px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      border-right: 1px solid rgba(0,0,0,0.08);
     }
 
     th .any {
-      font-size: 11px;
+      font-size: 10px;
       display: block;
       color: rgba(0,0,0,0.45);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     tr:nth-child(2) th {
-      padding: 4px;
-      font-size: 12px;
+      padding: 3px;
+      font-size: 11px;
     }
 
     td {
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
     }
 
     td > span {
       display: block;
-      padding: 5px;
+      padding: 4px;
       color: #555;
-      border: 2px solid transparent;
-      transition: background 0.2s ease, color 0.2s ease;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     td:nth-child(even) > span {
-      background-color: rgba(0,0,0,0.02);
+      background-color: rgba(0,0,0,0.015);
     }
 
     td:last-child > span,
@@ -87,11 +87,11 @@
       background-color: #BCA688;
       color: #fff;
       font-weight: bold;
-      border: 2px solid rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
     td.fora > span {
-      opacity: 0.25;
+      opacity: 0.22;
     }
 
     td > span:hover {
@@ -105,20 +105,20 @@
       color: #fff;
       border: none;
       font-family: inherit;
-      font-size: 14px;
-      height: 24px;
-      width: 24px;
+      font-size: 12px;
+      height: 20px;
+      width: 20px;
       border-radius: 999px;
       position: absolute;
-      top: 10px;
+      top: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
     }
 
-    .boto-prev { left: 6px; }
-    .boto-next { right: 6px; }
+    .boto-prev { left: 5px; }
+    .boto-next { right: 5px; }
 
     button:focus {
       outline: none;
@@ -157,7 +157,6 @@
         widget.appendChild(original);
       }
 
-      var diff = new Date(data - new Date(original.getAttribute("data-actual"))).getMonth();
       var e = document.createElement("table");
       widget.appendChild(e);
 
@@ -224,11 +223,10 @@
       }
 
       original.className = "inactiu";
-
       setTimeout(function() {
         var inactius = document.getElementsByClassName("inactiu");
         while (inactius.length) widget.removeChild(inactius[0]);
-      }, 500);
+      }, 300);
     }
 
     calendari(document.getElementById("calendari"), new Date());
